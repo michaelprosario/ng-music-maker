@@ -4,17 +4,17 @@ import { IMidiServices } from "../interfaces/midi-service";
 export class ScaleService
 {
     constructor(private midiServices: IMidiServices){
-
     }
 
     MakeScale(note: any, type: ScaleType, octaves: number) {
         var intStartNote = this.midiServices.GetNoteNumber(note);
+        let currentNote: number;
 
         var scale = new Array();
 
         if (type == ScaleType.Major) {
 
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
@@ -44,7 +44,7 @@ export class ScaleService
 
         }
         else if (type == ScaleType.Minor) {
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
@@ -74,7 +74,7 @@ export class ScaleService
 
         }
         else if (type == ScaleType.Spanish) {
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
@@ -105,7 +105,7 @@ export class ScaleService
         }
 
         else if (type == ScaleType.MinorPentatonic) {
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
@@ -131,7 +131,7 @@ export class ScaleService
 
         }
         else if (type == ScaleType.Blues) {
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
@@ -159,7 +159,7 @@ export class ScaleService
 
         }
         else if (type == ScaleType.MajorPentatonic) {
-            var currentNote = intStartNote;
+            currentNote = intStartNote;
             scale.push(currentNote);
 
             var k;
