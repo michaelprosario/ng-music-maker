@@ -1,4 +1,5 @@
-import { IMidiServices } from "@ng-music-maker/core";
+import { IMidiServices, MusicConstants } from "@ng-music-maker/core";
+import { ITrack } from "./track";
 var Util = require('jsmidgen').Util;
 
 export class MidiServices implements IMidiServices
@@ -12,5 +13,21 @@ export class MidiServices implements IMidiServices
             return note;
         }
     }
+
+    AddRhythmPattern(track: ITrack, strPattern: string, note: number) {
+        var i = 0;
+        for (i = 0; i < strPattern.length; i++) {
+
+            var currentChar = strPattern[i];
+            if (currentChar == "x") {
+                track.addNote(9, note, MusicConstants.BEAT / 4)
+            }
+            else if (currentChar != "|") {
+                track.addNote(9, 0, MusicConstants.BEAT / 4, 0);
+            }
+        }
+    }
+
+
 
 }

@@ -1,5 +1,5 @@
 export class ChordChange {
-    public Chord: string;
+    public Chord: any;
     public Length: number;
 
     constructor(chord: string, length: number) {
