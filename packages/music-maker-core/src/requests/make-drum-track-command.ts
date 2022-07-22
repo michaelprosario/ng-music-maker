@@ -6,4 +6,8 @@ export class DrumTrackRow{
 export class MakeDrumTrackCommand {
     beatsPerMinute: number = 120;
     tracks: DrumTrackRow[] = [];
+
+    constructor(){
+        this.tracks = [];
+    }
 }

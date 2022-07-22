@@ -1,4 +1,4 @@
-import { IMidiServices } from "music-maker-core/dist";
+import { IMidiServices } from "../interfaces/midi-service";
 import { MakeDrumTrackCommand } from "../requests/make-drum-track-command";
 import { MakeDrumTrackResponse } from "../response/make-drum-track-response";
 

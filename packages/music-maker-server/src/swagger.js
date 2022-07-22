@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Description',
   },
-  host: '8000-michaelpros-ngmusicmake-971i0rq9akf.ws-us54.gitpod.io',
+  host: '8000-michaelpros-ngmusicmake-rpifr6736o5.ws-us54.gitpod.io',
   schemes: ['https'],
 };
 

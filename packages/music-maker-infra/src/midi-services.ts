@@ -1,6 +1,6 @@
 import { IMidiServices, MusicConstants } from "@ng-music-maker/core";
-import { MakeDrumTrackCommand } from "music-maker-core/src/requests/make-drum-track-command";
-import { MakeDrumTrackResponse } from "music-maker-core/src/response/make-drum-track-response";
+import { MakeDrumTrackCommand } from "@ng-music-maker/core";
+import { MakeDrumTrackResponse } from "@ng-music-maker/core";
 import { ITrack } from "./track";
 var Util = require('jsmidgen').Util;
 var fs = require('fs');
@@ -23,12 +23,16 @@ export class MidiServices implements IMidiServices
             this.AddRhythmPattern(track, drumTrack.pattern,drumTrack.instrumentNumber);
         }
 
-        let fileName = Date.now().toString(36) + ".mid";
+        let fileName = this.makeGuid() + ".mid";
 
         fs.writeFileSync(fileName, file.toBytes(), 'binary');
         let response = new MakeDrumTrackResponse();
         response.file = fileName;
         return response;
+    }
+
+    private makeGuid() {
+        return Date.now().toString(36);
     }
 
     GetNoteNumber(aNote: any): number {
