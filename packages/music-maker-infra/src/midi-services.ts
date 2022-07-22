@@ -23,7 +23,7 @@ export class MidiServices implements IMidiServices
             this.AddRhythmPattern(track, drumTrack.pattern,drumTrack.instrumentNumber);
         }
 
-        let fileName = this.makeGuid() + ".mid";
+        let fileName = ".//output//" + this.makeGuid() + ".mid";
 
         fs.writeFileSync(fileName, file.toBytes(), 'binary');
         let response = new MakeDrumTrackResponse();
