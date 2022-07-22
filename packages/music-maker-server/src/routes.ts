@@ -13,6 +13,18 @@ router.post('/add', (req: Request, res: Response) => {
 
 router.post('/makeDrumTrack', (req: Request, res: Response) => {
 
+  /*  #swagger.requestBody = {
+          required: true
+          description: 'makes drum track midi for user',
+          schema: {
+            $userId: 'mrosario',
+            $beatsPerMinute: 79,
+            tracks:[{
+                    $instrumentNumber: 56,
+                    $pattern: 'x-x-|x-x-|xxx-|x-xx|x-x-|x-x-|xxx-|x-xx|x-x-|x-x-|xxx-|x-xx|x-x-|x-x-|xxx-|x-xx|'
+                }]
+            }
+  } */
 
   let command: MakeDrumTrackCommand = req.body as unknown as MakeDrumTrackCommand;
 

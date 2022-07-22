@@ -1,5 +1,5 @@
 import { ChordChange, MusicConstants, AbstractChordPlayer, Util } from "@ng-music-maker/core";
-import { ITrack } from "./track";
+import { ITrack } from "@ng-music-maker/core";
 
 export class Arpeggio1 extends AbstractChordPlayer {
 

@@ -25,6 +25,13 @@ export class MakeDrumTrackService
             return response;
         }
 
+        // make sure user is defined
+        if(command.userId || command.userId.length === 0){
+            response.message = "command.userId is not defined";
+            response.code = 400;
+            return response;
+        }
+
         return this.midiService.makeDrumTrack(command);
     }
 }
