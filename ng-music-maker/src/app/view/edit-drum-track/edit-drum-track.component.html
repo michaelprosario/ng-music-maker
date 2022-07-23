@@ -1,0 +1,27 @@
+<p-panel header="NG Music Maker > Drum Machine" [toggleable]="false">
+    <table>
+        <tr *ngFor="let track of tracks; let i = index">
+            <td>{{track.instrumentName}}</td>
+            <td *ngFor="let itemValue of track.trackData; let j = index">
+                {{j}}
+            </td>
+        </tr>
+    </table>
+    <h3>Configuration</h3>
+    <div>
+        <div>Tempo</div>
+        <div><input [(ngModel)]="tempo" ></div>
+    </div>
+    <div>
+        <div>Beats per measure</div>
+        <div><input [(ngModel)]="beatsPerMeasure" ></div>
+    </div>
+    <div>
+        <div>Number of measures</div>
+        <div><input [(ngModel)]="numberOfMeasures" ></div>
+    </div>
+
+
+
+
+</p-panel>
