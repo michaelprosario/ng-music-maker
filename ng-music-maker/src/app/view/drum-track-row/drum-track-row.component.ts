@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DrumTrackViewModel } from '../edit-drum-track/edit-drum-track.component';
+import { DrumTrackViewModel } from "../edit-drum-track/drum-track-view-model";
 
 @Component({
   selector: 'app-drum-track-row',

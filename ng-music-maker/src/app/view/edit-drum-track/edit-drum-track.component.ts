@@ -1,22 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export class DrumTrackViewModel
-{
-  trackData: number[]
-  constructor(
-    public instrumentName: string,
-    public instrumentNumber: number,
-    public measureCount: number,
-    public beatsPerMeasure: number)
-
-  {
-    let itemCount = measureCount*beatsPerMeasure*4;
-    this.trackData = [];
-    for(let i = 0; i < itemCount; i++){
-      this.trackData.push(0);
-    }
-  }
-}
+import { DrumTrackRow, MakeDrumTrackCommand, ServerClient } from 'src/app/core/services/server-client';
+import { DrumTrackViewModel } from './drum-track-view-model';
 
 /*
 - create setup panel
@@ -41,8 +25,12 @@ export class EditDrumTrackComponent implements OnInit {
   numberOfMeasures: number = 4;
   tracks: DrumTrackViewModel[];
 
-  constructor() {
+  constructor(private serverClient: ServerClient) {
     this.tracks = [];
+  }
+
+  onGetTracks(){
+    console.log(this.tracks)
   }
 
   ngOnInit(): void {
@@ -56,6 +44,46 @@ export class EditDrumTrackComponent implements OnInit {
     aTrack = new DrumTrackViewModel("Closed High hat", 42, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
 
+  }
+
+  async onPlayTracks(){
+    // map tracks view model to command ...
+    let command = new MakeDrumTrackCommand();
+    command.beatsPerMinute = this.beatsPerMeasure;
+    command.userId = "user1";
+    command.tracks = this.getTracks();
+
+    // execute midi file build process ...
+    let response = await this.serverClient.makeDrumTrack(command);
+
+    // build reference to midi file
+
+    // play it
+  }
+
+  getTracks(): DrumTrackRow[] {
+    let drumTracks = [];
+    for(let track of this.tracks)
+    {
+      let drumTrackRow = new DrumTrackRow();
+      drumTrackRow.instrumentNumber = track.instrumentNumber;
+      let drumString = "";
+      for(let i=0; i< track.trackData.length; i++)
+      {
+        let currentValue = track.trackData[i];
+        if(currentValue > 0)
+        {
+          drumString += "x"
+        }else{
+          drumString += "-"
+        }
+      }
+      drumTrackRow.pattern = drumString;
+
+      drumTracks.push(drumTrackRow);
+    }
+
+    return drumTracks;
   }
 
 }

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {PanelModule} from 'primeng/panel';
 import { DrumTrackRowComponent } from './view/drum-track-row/drum-track-row.component';
 import { DrumTrackCellComponent } from './view/drum-track-cell/drum-track-cell.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DrumTrackCellComponent } from './view/drum-track-cell/drum-track-cell.c
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    PanelModule
+    PanelModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
