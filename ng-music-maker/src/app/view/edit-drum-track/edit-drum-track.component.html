@@ -1,10 +1,10 @@
 <p-panel header="NG Music Maker > Drum Machine" [toggleable]="false">
     <div class="divTracks">
-        <table class="tblTracks">
-            <tr *ngFor="let track of tracks; let i = index" alt="foo" >
-                <td *ngFor="let itemValue of track.trackData; let j = index" class="tdTrackCell"></td>
-            </tr>
-        </table>
+
+        <div *ngFor="let track of tracks; let i = index">
+            <app-drum-track-row [track]="track"  ></app-drum-track-row>
+        </div>
+
     </div>
     <h3>Configuration</h3>
     <div>

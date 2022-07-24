@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-class DrumTrackViewModel
+export class DrumTrackViewModel
 {
   trackData: number[]
   constructor(

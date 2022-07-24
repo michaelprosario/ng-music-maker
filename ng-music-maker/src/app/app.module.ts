@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { EditDrumTrackComponent } from './view/edit-drum-track/edit-drum-track.component';
 import { FormsModule } from '@angular/forms';
 import {PanelModule} from 'primeng/panel';
+import { DrumTrackRowComponent } from './view/drum-track-row/drum-track-row.component';
+import { DrumTrackCellComponent } from './view/drum-track-cell/drum-track-cell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditDrumTrackComponent
+    EditDrumTrackComponent,
+    DrumTrackRowComponent,
+    DrumTrackCellComponent
   ],
   imports: [
     AppRoutingModule,
