@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DrumTrackRow, MakeDrumTrackCommand, ServerClient } from 'src/app/core/services/server-client';
+import { environment } from 'src/environments/environment';
 import { DrumTrackViewModel } from './drum-track-view-model';
 
 /*
@@ -24,9 +25,11 @@ export class EditDrumTrackComponent implements OnInit {
   beatsPerMeasure: number = 4;
   numberOfMeasures: number = 4;
   tracks: DrumTrackViewModel[];
+  midiUrl: string;
 
   constructor(private serverClient: ServerClient) {
     this.tracks = [];
+    this.midiUrl = `${environment.apiUrl}/getDrumTrack/user1`;
   }
 
   onGetTracks(){
@@ -59,6 +62,7 @@ export class EditDrumTrackComponent implements OnInit {
     console.log(response);
 
     // build reference to midi file
+
 
     // play it
   }
