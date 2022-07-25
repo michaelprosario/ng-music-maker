@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://localhost:8000"
+  apiUrl:"https://8000-michaelpros-ngmusicmake-ljdtipk3jk7.ws-us54.gitpod.io"
 };
 
 /*

@@ -35,7 +35,7 @@ export class ServerClient {
             throw new Error('Command is not defined');
         }
 
-        return this.http.post(`${environment.apiUrl}/api/makeDrumTrack`, command).toPromise();
+        return this.http.post(`${environment.apiUrl}/makeDrumTrack`, command).toPromise();
     }
 
 }

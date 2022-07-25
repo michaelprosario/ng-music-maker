@@ -1,6 +1,7 @@
 // background: https://blog.logrocket.com/how-to-set-up-node-typescript-express/
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
+var cors = require('cors')
 const routes = require('./routes');
 const swaggerFile = require('./swagger-output.json')
 const swaggerUi = require('swagger-ui-express')
@@ -9,6 +10,7 @@ var bodyParser = require('body-parser')
 dotenv.config();
 
 const app: Express = express();
+app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json({ type: 'application/json' }))
 const port = 8000;

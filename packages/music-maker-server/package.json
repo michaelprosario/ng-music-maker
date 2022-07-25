@@ -28,6 +28,7 @@
   "dependencies": {
     "@ng-music-maker/core": "^0.0.0",
     "@ng-music-maker/infra": "^0.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "jsmidgen": "0.1.5",

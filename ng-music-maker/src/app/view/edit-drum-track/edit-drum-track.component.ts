@@ -55,6 +55,8 @@ export class EditDrumTrackComponent implements OnInit {
 
     // execute midi file build process ...
     let response = await this.serverClient.makeDrumTrack(command);
+    console.log("response from make drum track .........")
+    console.log(response);
 
     // build reference to midi file
 
