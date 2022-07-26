@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 dotenv.config();
 
 const app: Express = express();
-app.use(cors())
+app.use(cors({ origin: '*' }))
 app.use(express.json());
 app.use(bodyParser.json({ type: 'application/json' }))
 const port = 8000;
