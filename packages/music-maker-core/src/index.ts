@@ -1,5 +1,6 @@
 export { AbstractChordPlayer } from './interfaces/abstract-chord-player'
 export { ChordChange } from './value-objects/chord-change';
+export { DrumNotes } from './value-objects/drum-notes';
 export { IMidiServices } from './interfaces/midi-service';
 export { ITrack } from './interfaces/track';
 export { MakeDrumTrackCommand } from './requests/make-drum-track-command';
