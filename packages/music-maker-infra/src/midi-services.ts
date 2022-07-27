@@ -14,12 +14,11 @@ export class MidiServices implements IMidiServices
         var file = new Midi.File();
 
         // set a track to se tempo
-        var track = new Midi.Track();
-        track.setTempo(command.beatsPerMinute);
 
         // Build a track
         for(let drumTrack of command.tracks){
             var track = new Midi.Track();
+            track.setTempo(command.beatsPerMinute);
             this.AddRhythmPattern(track, drumTrack.pattern,drumTrack.instrumentNumber);
             file.addTrack(track);
         }
