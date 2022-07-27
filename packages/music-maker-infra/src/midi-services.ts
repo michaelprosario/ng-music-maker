@@ -11,16 +11,17 @@ export class MidiServices implements IMidiServices
 {
     makeDrumTrack(command: MakeDrumTrackCommand): MakeDrumTrackResponse {
 
-        var beat=command.beatsPerMinute;
         var file = new Midi.File();
 
-        // Build a track
+        // set a track to se tempo
         var track = new Midi.Track();
-        track.setTempo(beat);
-        file.addTrack(track);
+        track.setTempo(command.beatsPerMinute);
 
+        // Build a track
         for(let drumTrack of command.tracks){
+            var track = new Midi.Track();
             this.AddRhythmPattern(track, drumTrack.pattern,drumTrack.instrumentNumber);
+            file.addTrack(track);
         }
 
         let userId = command.userId;

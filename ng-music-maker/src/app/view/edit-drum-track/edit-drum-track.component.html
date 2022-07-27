@@ -1,6 +1,11 @@
-<button (click)="onGetTracks()">Get track data</button>
+<button (click)="onRandomTracks()">Make Random Tracks</button>
 <button (click)="onPlayTracks()">Play tracks</button>
-
+<hr>
+<midi-player
+  [src]="midiUrl"
+  sound-font >
+</midi-player>
+<hr>
 <p-panel header="NG Music Maker > Drum Machine" [toggleable]="false">
     <div class="divTracks">
 

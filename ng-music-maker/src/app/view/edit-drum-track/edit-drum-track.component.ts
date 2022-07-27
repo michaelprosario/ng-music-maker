@@ -21,7 +21,7 @@ import { DrumTrackViewModel } from './drum-track-view-model';
 })
 export class EditDrumTrackComponent implements OnInit {
 
-  tempo: number = 80;
+  tempo: number = 180;
   beatsPerMeasure: number = 4;
   numberOfMeasures: number = 4;
   tracks: DrumTrackViewModel[];
@@ -49,20 +49,32 @@ export class EditDrumTrackComponent implements OnInit {
 
   }
 
+  onRandomTracks() {
+    for (let track of this.tracks) {
+      for (let j = 0; j < track.trackData.length; j++) {
+
+        let k = Math.random();
+        if (k < 0.20) {
+          track.trackData[j] = 120;
+        } else {
+          track.trackData[j] = 0;
+        }
+      }
+    }
+  }
+
   async onPlayTracks(){
     // map tracks view model to command ...
     let command = new MakeDrumTrackCommand();
-    command.beatsPerMinute = this.beatsPerMeasure;
+    command.beatsPerMinute = this.tempo;
     command.userId = "user1";
     command.tracks = this.getTracks();
+    console.log(command);
 
     // execute midi file build process ...
     let response = await this.serverClient.makeDrumTrack(command);
     console.log("response from make drum track .........")
     console.log(response);
-
-    // build reference to midi file
-
 
     // play it
   }
