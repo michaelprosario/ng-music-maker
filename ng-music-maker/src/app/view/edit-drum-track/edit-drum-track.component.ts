@@ -40,6 +40,7 @@ export class EditDrumTrackComponent implements OnInit {
     let aTrack = new DrumTrackViewModel("Cow bell", 56, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
 
+    // standard drum stuff ..
     aTrack = new DrumTrackViewModel("Base Drum", 36, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
     aTrack = new DrumTrackViewModel("Snare Drum", 38, this.numberOfMeasures, this.beatsPerMeasure);
@@ -47,14 +48,44 @@ export class EditDrumTrackComponent implements OnInit {
     aTrack = new DrumTrackViewModel("Closed High hat", 42, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
 
+    // toms ....
+    aTrack = new DrumTrackViewModel("Low Tom", 45, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Medium Tom", 47, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("High Tom", 50, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+
+
+    // Conga ....
+    aTrack = new DrumTrackViewModel("Conga 1", 60, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Conga 2", 61, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Conga 3", 62, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Conga 4", 63, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Conga 5", 64, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+
   }
+
+  onClearTracks(){
+    for (let track of this.tracks) {
+      for (let j = 0; j < track.trackData.length; j++) {
+          track.trackData[j] = 0;
+      }
+    }
+  }
+
 
   onRandomTracks() {
     for (let track of this.tracks) {
       for (let j = 0; j < track.trackData.length; j++) {
 
         let k = Math.random();
-        if (k < 0.20) {
+        if (k < 0.25) {
           track.trackData[j] = 120;
         } else {
           track.trackData[j] = 0;
@@ -77,6 +108,12 @@ export class EditDrumTrackComponent implements OnInit {
     console.log(response);
 
     // play it
+    let midiPlayer = document.getElementById("midiPlayer");
+    // @ts-ignore
+    midiPlayer.reload();
+    // @ts-ignore
+    setTimeout(() => { midiPlayer.start() }, 3000)
+
   }
 
   getTracks(): DrumTrackRow[] {
