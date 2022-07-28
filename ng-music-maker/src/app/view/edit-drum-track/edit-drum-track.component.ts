@@ -32,6 +32,10 @@ export class EditDrumTrackComponent implements OnInit {
     this.midiUrl = `${environment.apiUrl}/getDrumTrack/user1`;
   }
 
+  onDownload(){
+    window.location.href=this.midiUrl;
+  }
+
   onGetTracks(){
     console.log(this.tracks)
   }
