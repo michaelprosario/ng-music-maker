@@ -1,4 +1,7 @@
-<div>{{track.instrumentName}}</div>
+<div>
+    {{track.instrumentName}}
+</div>
+
 <div class="divTrackCells">
 <app-drum-track-cell
     *ngFor="let cell of track.trackData; let j = index "
@@ -6,5 +9,13 @@
     [trackCellValue]="track.trackData[j]"
     >
 </app-drum-track-cell>
+</div><!-- END divTrackCells -->
 
+<div class="divPatterns">
+    Pattern:
+    <button (click)="onPattern1()">1</button>
+    <button (click)="onPattern2()">2</button>
+    <button (click)="onPattern3()">3</button>
+    <button (click)="onPattern4()">4</button>
+    <button (click)="onClear()">Clear</button>
 </div>

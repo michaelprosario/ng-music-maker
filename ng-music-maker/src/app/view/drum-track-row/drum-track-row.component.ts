@@ -25,10 +25,70 @@ export class DrumTrackRowComponent implements OnInit {
     }else{
       track.trackData[index] = 0;
     }
-
     console.log(track);
+  }
+
+  onPattern1(){
+    let trackCopy = { ...this.track } as DrumTrackViewModel;
+    for(let i=0; i<trackCopy.trackData.length; i++){
+      if(i % 4 === 0){
+        trackCopy.trackData[i] = 120;
+      }else{
+        trackCopy.trackData[i] = 0;
+      }
+    }
+
+    this.track = trackCopy;
+  }
+
+  onPattern2(){
+    let trackCopy = { ...this.track } as DrumTrackViewModel;
+    for(let i=0; i<trackCopy.trackData.length; i++){
+      if(i % 2 === 0){
+        trackCopy.trackData[i] = 120;
+      }else{
+        trackCopy.trackData[i] = 0;
+      }
+    }
+
+    this.track = trackCopy;
+  }
+
+  onPattern3(){
+    let trackCopy = { ...this.track } as DrumTrackViewModel;
+    for(let i=0; i<trackCopy.trackData.length; i++){
+      if(i % 8 === 4){
+        trackCopy.trackData[i] = 120;
+      }else{
+        trackCopy.trackData[i] = 0;
+      }
+    }
+
+    this.track = trackCopy;
+  }
+
+  onPattern4(){
+    let trackCopy = { ...this.track } as DrumTrackViewModel;
+    for(let i=0; i<trackCopy.trackData.length; i++){
+      let k = Math.random();
+      if(k < 0.2){
+        trackCopy.trackData[i] = 120;
+      }else{
+        trackCopy.trackData[i] = 0;
+      }
+    }
+
+    this.track = trackCopy;
 
   }
 
+  onClear(){
+    let trackCopy = { ...this.track } as DrumTrackViewModel;
+    for(let i=0; i<trackCopy.trackData.length; i++){
+      trackCopy.trackData[i] = 0;
+    }
+
+    this.track = trackCopy;
+  }
 
 }
