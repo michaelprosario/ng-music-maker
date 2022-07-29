@@ -41,25 +41,13 @@ export class EditDrumTrackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let aTrack = new DrumTrackViewModel("Cow bell", 56, this.numberOfMeasures, this.beatsPerMeasure);
-    this.tracks.push(aTrack);
-
     // standard drum stuff ..
-    aTrack = new DrumTrackViewModel("Base Drum", 36, this.numberOfMeasures, this.beatsPerMeasure);
+    let aTrack = new DrumTrackViewModel("Base Drum", 36, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
     aTrack = new DrumTrackViewModel("Snare Drum", 38, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
     aTrack = new DrumTrackViewModel("Closed High hat", 42, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
-
-    // toms ....
-    aTrack = new DrumTrackViewModel("Low Tom", 45, this.numberOfMeasures, this.beatsPerMeasure);
-    this.tracks.push(aTrack);
-    aTrack = new DrumTrackViewModel("Medium Tom", 47, this.numberOfMeasures, this.beatsPerMeasure);
-    this.tracks.push(aTrack);
-    aTrack = new DrumTrackViewModel("High Tom", 50, this.numberOfMeasures, this.beatsPerMeasure);
-    this.tracks.push(aTrack);
-
 
     // Conga ....
     aTrack = new DrumTrackViewModel("Conga 1", 60, this.numberOfMeasures, this.beatsPerMeasure);
@@ -72,6 +60,20 @@ export class EditDrumTrackComponent implements OnInit {
     this.tracks.push(aTrack);
     aTrack = new DrumTrackViewModel("Conga 5", 64, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
+
+    // toms ....
+    aTrack = new DrumTrackViewModel("Low Tom", 45, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("Medium Tom", 47, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+    aTrack = new DrumTrackViewModel("High Tom", 50, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+
+    // Needs more cow bell
+    aTrack = new DrumTrackViewModel("Cow bell", 56, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
+
+
 
   }
 
