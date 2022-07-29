@@ -11,7 +11,7 @@
     "packages/**"
   ],
   "scripts": {
-    "build": "lerna run --parallel build",
+    "build": "lerna run build",
     "build:fresh": "yarn clean && yarn build",
     "clean": "lerna run --parallel clean && del-cli .build-cache *.log coverage junit.xml",
     "test": "jest",
