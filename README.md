@@ -6,9 +6,184 @@ For a project overview, check the following blog post: http://innovativeteams.ne
 
 I do want to give a shout out to David Ingram of Google for putting together jsmidgen. David’s library handled all the low-level concerns for generating MIDI files, adding tracks, and notes. Please keep in mind that MIDI is a music protocol and file format that focuses on the idea of turning notes and off like switches over time. Make sure to check out his work here: https://github.com/dingram/jsmidgen
 
+# Features
+- express server to connect MIDI file services to APIs
+- Angular project to demo features
+- Angular project includes a drum pattern maker
+- TypeScript API for expressing ideas like chords, chord progressions, scales, and players
+- Players iterate over chord progressions using a style
 
-To explore how the MIDI services work.. please inspect the examples here:
-packages/music-maker-examples/src/index.ts
+To explore how the MIDI services work.. please inspect the examples here. (see examples project)
+
+``` javascript
+
+let midiServices = new MidiServices();
+let scaleServices = new ScaleService(midiServices);
+let chordServices = new ChordServices(midiServices);
+
+function makeScale() {
+    var file = new Midi.File();
+
+    // Build a track
+    var track = new Midi.Track();
+    track.setTempo(80);
+    file.addTrack(track);
+
+    // Make a scale
+    var scale = scaleServices.MakeScale("c4", ScaleType.MajorPentatonic, 2);
+    for (var i = 0; i < scale.length; i++) {
+        track.addNote(0, scale[i], 50);
+    }
+
+    // Write a MIDI file
+    fs.writeFileSync('test.mid', file.toBytes(), 'binary');
+}
+
+function threeNotes() {
+    var file = new Midi.File();
+
+    // Build a track
+    var track = new Midi.Track();
+    track.setTempo(80);
+    file.addTrack(track);
+
+    let mm = midiServices;
+    let beat = 50;
+    track.addNote(0, mm.GetNoteNumber("c4"), beat);
+    track.addNote(0, mm.GetNoteNumber("d4"), beat);
+    track.addNote(0, mm.GetNoteNumber("e4"), beat);
+
+    // Write a MIDI file
+    fs.writeFileSync('test2.mid', file.toBytes(), 'binary');
+}
+
+function drumTest()
+{
+    var file = new Midi.File();
+
+    // Build a track
+    var track = new Midi.Track();
+    track.setTempo(80);
+    file.addTrack(track);
+
+    let mm = midiServices;
+
+    var addRhythmPattern = mm.AddRhythmPattern;
+    addRhythmPattern(track, "x-x-|x-x-|xxx-|x-xx",DrumNotes.ClosedHighHat);
+    fs.writeFileSync('drumTest.mid', file.toBytes(), 'binary');
+}
+
+function chordProgressions(){
+    var file = new Midi.File();
+
+    // Build a track
+    var track = new Midi.Track();
+    track.setTempo(80);
+    file.addTrack(track);
+
+    var chordList = new Array();
+    chordList.push(new ChordChange(chordServices.MakeChord("e4", ChordType.Minor),4));
+    chordList.push(new ChordChange(chordServices.MakeChord("c4", ChordType.Major),4));
+    chordList.push(new ChordChange(chordServices.MakeChord("d4", ChordType.Major),4));
+    chordList.push(new ChordChange(chordServices.MakeChord("c4", ChordType.Major),4));
+
+    var chordPlayer = new SimplePlayer()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new Arpeggio1()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new RandomPlayer()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new BassPlayer1()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new BassPlayer2()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new BassPlayer3()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    chordPlayer = new OffBeatPlayer()
+    chordPlayer.PlayFromChordChanges(track, chordList, 0);
+
+    fs.writeFileSync('chordProgressions.mid', file.toBytes(), 'binary');
+}
+
+
+makeScale();
+threeNotes();
+drumTest();
+chordProgressions();
+
+```
+
+# API Reference
+
+To learn more JSMIDGEN,
+please visit https://github.com/dingram/jsmidgen
+
+## addNote
+```
+var track = new Midi.Track();
+track.addNote(0, ‘c4’, 64);
+```
+
+## addChord
+```
+var track = new Midi.Track();
+var c = mm.MakeChord(“c5”, mm.ChordType.Major);
+track.addChord(0, c, beat*4);
+```
+
+## setTempo
+```
+track.setTempo(bpm[, time])
+```
+
+You can find many of these functions in the MusicMaker services.
+
+## GetNoteNumber(aNote)
+- Converts a note string to a number. Returns an integer.
+- aNote: note to convert
+
+## MakeChord(root,type: ChordType)
+- Creates a chord based on note and chord type.
+- root: This can be a note like the string “c4” or an integer.
+- type: Type of chord. Please refer to the ‘ChordType’ enumeration.
+
+## MakeScale(note, type: ScaleType, octaves: number)
+
+- Creates a scale based on note and type.
+- root: This can be a note like the string “c4” or an integer.
+- type: Type of scale. Please refer to the ‘ScaleType’ enumeration.
+
+## SelectRandom(myArray)
+
+- Selects a random element from ‘myArray’ and returns it.
+- myArray: is an array of stuff.
+
+## AddRhythmPattern(track,strPattern: string, note: number)
+
+- Provides an easy way to express patterns of notes
+- track: represents a track objects from jsmidgen
+- strPattern: Provide a string to represent a pattern of sound. Each character represents a 16th note. x plays the note. – advances by a 16th note. All other characters are ignored.
+- note: Note to play.
+
+## ChordChange(chord,length:number)
+
+- Class represents a chord played over a number of beats.
+- chord: an array of notes or chord
+- length: number of beats to play chord.
+
+
+## Chord Players
+
+- You can use chord player classes to generate music patterns based on a sequence of chords or chord progression.
+- Some of the chord player classes include the following: Arpeggio1, BassPLayer1, BassPLayer2, BassPLayer3,
+OffBeatPlayer, RandomPlayer, and SimplePlayer
+- To use a chord player class, create an instance of the class and call the following: PlayFromChordChanges(track,chordList,channel).   You need to pass a track, a list of chord changes, and a MIDI channel.
 
 # TypeScript + Yarn Workspace + Lerna + Jest Monorepo Boilerplate
 
