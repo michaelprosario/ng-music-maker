@@ -1,0 +1,90 @@
+yarn run v1.22.19
+$ node dist/index.js
+t {
+  name: '',
+  notes: [
+    t {
+      midi: 60,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 0,
+      durationTicks: 50
+    },
+    t {
+      midi: 64,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 50,
+      durationTicks: 50
+    },
+    t {
+      midi: 65,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 100,
+      durationTicks: 50
+    },
+    t {
+      midi: 67,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 150,
+      durationTicks: 50
+    },
+    t {
+      midi: 71,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 200,
+      durationTicks: 50
+    },
+    t {
+      midi: 72,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 250,
+      durationTicks: 50
+    },
+    t {
+      midi: 76,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 300,
+      durationTicks: 50
+    },
+    t {
+      midi: 77,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 350,
+      durationTicks: 50
+    },
+    t {
+      midi: 79,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 400,
+      durationTicks: 50
+    },
+    t {
+      midi: 83,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 450,
+      durationTicks: 50
+    },
+    t {
+      midi: 84,
+      velocity: 0.7086614173228346,
+      noteOffVelocity: 0.7086614173228346,
+      ticks: 500,
+      durationTicks: 50
+    }
+  ],
+  controlChanges: {},
+  pitchBends: [],
+  instrument: t { number: 0 },
+  channel: 0,
+  endOfTrackTicks: 550
+}
+Done in 0.10s.

@@ -7,8 +7,8 @@ export class MidiReaderService
         if(!file){
             throw new Error("file is not defined");
         }
-        
-        const midiData = fs.readFileSync("test.mid")
+
+        const midiData = fs.readFileSync(file)
         const midi = new Midi(midiData);
         return midi;
     }

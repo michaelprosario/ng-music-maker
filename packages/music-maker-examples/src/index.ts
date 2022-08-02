@@ -9,6 +9,7 @@ let scaleServices = new ScaleService(midiServices);
 let chordServices = new ChordServices(midiServices);
 
 function makeScale() {
+
     var file = new Midi.File();
 
     // Build a track
@@ -41,7 +42,7 @@ function threeNotes() {
     track.addNote(0, mm.GetNoteNumber("e4"), beat);
 
     // Write a MIDI file
-    fs.writeFileSync('test2.mid', file.toBytes(), 'binary');
+    fs.writeFileSync('three.mid', file.toBytes(), 'binary');
 }
 
 function drumTest()
@@ -100,13 +101,34 @@ function chordProgressions(){
 
 function readMidiFile(){
     let readerService = new MidiReaderService();
-    let response = readerService.readMidiFile("chordProgressions.mid");
-    console.log(response);
+
+    let midi = readerService.readMidiFile("three.mid");
+    // @ts-ignore
+    midi.tracks.forEach(track => {
+        //tracks have notes and controlChanges
+
+        //notes are an array
+        const notes = track.notes
+        // @ts-ignore
+        notes.forEach(note => {
+          console.log(note)
+        })
+
+        //the control changes are an object
+        //the keys are the CC number
+        // track.controlChanges[64]
+        //they are also aliased to the CC number's common name (if it has one)
+
+
+        //the track also has a channel and instrument
+        //track.instrument.name
+      })
 }
 
 
 makeScale();
-threeNotes();
+
 drumTest();
 chordProgressions();
+threeNotes();
 readMidiFile();
