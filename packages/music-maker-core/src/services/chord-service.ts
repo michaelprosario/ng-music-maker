@@ -1,9 +1,25 @@
 import { ChordType } from "../enums";
 import { IMidiServices } from "../interfaces/midi-service";
+import { Chord } from "../value-objects/chord";
+import { Util } from "./util";
 
 export class ChordServices
 {
     constructor(private midiServices: IMidiServices){
+    }
+
+    GetChordArrayFromString(input: string)
+    {
+        let mapper = Util.GetNoteNameToNumberMap();
+        let parts = input.split(" ");
+        let response = [];
+        for(let chordName of parts)
+        {
+            let noteNumber = mapper[chordName];
+            response.push(noteNumber);
+        }
+
+        return response;
     }
 
     MakeChord(root: string, type: ChordType) : Array<number> {
@@ -44,5 +60,39 @@ export class ChordServices
         }
 
         return aChord;
+    }
+
+    Estimate(notes: Array<number>)
+    {
+        // check for major chords
+        let noteNameMapper = Util.GetNoteNumberToNameMap();
+        for(let currentNote =60; currentNote<71; currentNote++)
+        {
+            let root = currentNote;
+            let third = currentNote + 4;
+            let fifth = third + 3;
+            if(notes.indexOf(root) !== -1 &&
+               notes.indexOf(third) !== -1 &&
+               notes.indexOf(fifth) !== -1 )
+            {
+                return new Chord(noteNameMapper[currentNote], "major");
+            }
+        }
+
+        // check for minor chords
+        for(let currentNote =60; currentNote<71; currentNote++)
+        {
+            let root = currentNote;
+            let third = currentNote + 3;
+            let fifth = third + 4;
+            if(notes.indexOf(root) !== -1 &&
+               notes.indexOf(third) !== -1 &&
+               notes.indexOf(fifth) !== -1 )
+            {
+                return new Chord(noteNameMapper[currentNote], "minor");
+            }
+        }
+
+        return null;
     }
 }

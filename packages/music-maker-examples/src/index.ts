@@ -105,23 +105,11 @@ function readMidiFile(){
     let midi = readerService.readMidiFile("three.mid");
     // @ts-ignore
     midi.tracks.forEach(track => {
-        //tracks have notes and controlChanges
-
-        //notes are an array
         const notes = track.notes
         // @ts-ignore
         notes.forEach(note => {
           console.log(note)
         })
-
-        //the control changes are an object
-        //the keys are the CC number
-        // track.controlChanges[64]
-        //they are also aliased to the CC number's common name (if it has one)
-
-
-        //the track also has a channel and instrument
-        //track.instrument.name
       })
 }
 
