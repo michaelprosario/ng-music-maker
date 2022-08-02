@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://8000-michaelpros-ngmusicmake-co4p74eajue.ws-us54.gitpod.io"
+  apiUrl:"https://8000-michaelpros-ngmusicmake-ssqh3a4lwes.ws-us54.gitpod.io/"
 };
 
 /*

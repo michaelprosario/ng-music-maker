@@ -1,4 +1,4 @@
-import { Arpeggio1, BassPlayer1, BassPlayer2, BassPlayer3, MidiServices, OffBeatPlayer, RandomPlayer, SimplePlayer } from '@ng-music-maker/infra';
+import { Arpeggio1, BassPlayer1, BassPlayer2, BassPlayer3, MidiServices, OffBeatPlayer, RandomPlayer, SimplePlayer, MidiReaderService } from '@ng-music-maker/infra';
 import { ScaleService, ScaleType, DrumNotes, ChordChange, ChordType, ChordServices } from '@ng-music-maker/core';
 
 var fs = require('fs');
@@ -98,8 +98,15 @@ function chordProgressions(){
     fs.writeFileSync('chordProgressions.mid', file.toBytes(), 'binary');
 }
 
+function readMidiFile(){
+    let readerService = new MidiReaderService();
+    let response = readerService.readMidiFile("chordProgressions.mid");
+    console.log(response);
+}
+
 
 makeScale();
 threeNotes();
 drumTest();
 chordProgressions();
+readMidiFile();

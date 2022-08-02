@@ -1,0 +1,4 @@
+libs to review
+- https://scribbletune.com/
+- https://tonejs.github.io/
+- npm install @tonejs/midi

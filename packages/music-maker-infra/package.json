@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@ng-music-maker/core": "^0.0.0",
+    "@tonejs/midi": "^2.0.28",
     "jsmidgen": "0.1.5"
   },
   "devDependencies": {}
