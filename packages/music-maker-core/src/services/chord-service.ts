@@ -1,6 +1,8 @@
+import { ChordChange } from "../value-objects/chord-change";
 import { ChordType } from "../enums";
 import { IMidiServices } from "../interfaces/midi-service";
 import { Chord } from "../value-objects/chord";
+import { ChordChange2 } from "../value-objects/chord-change2";
 import { Util } from "./util";
 
 export class ChordServices
@@ -17,6 +19,32 @@ export class ChordServices
         {
             let noteNumber = mapper[chordName];
             response.push(noteNumber);
+        }
+
+        return response;
+    }
+
+    getScaleNotesMap(){
+        let map = {} as any;
+        map[1] = "c4";
+        map[2] = "d4";
+        map[3] = "f4";
+        map[4] = "g4";
+        map[5] = "a4";
+        map[6] = "b4";
+        return map;
+    }
+
+    MakeChordChangesFromChordChange2(phrase: Array<ChordChange2>)
+    {
+        let scaleMap = this.getScaleNotesMap();
+
+        let response: Array<ChordChange> = [];
+        for(let chordChange2 of phrase){
+            let root = scaleMap[chordChange2.chordRoot];
+            let chord = this.MakeChord(root, chordChange2.chordType);
+            let chordChange = new ChordChange(chord, chordChange2.beatCount);
+            response.push(chordChange);
         }
 
         return response;
