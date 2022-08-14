@@ -15,7 +15,6 @@ track.setTempo(80);
 file.addTrack(track);
 
 let mm = midiServices;
-
 var addRhythmPattern = mm.AddRhythmPattern;
 addRhythmPattern(track, "x-x-|x-x-|xxx-|x-xx",DrumNotes.ClosedHighHat);
 fs.writeFileSync('drumTest.mid', file.toBytes(), 'binary');

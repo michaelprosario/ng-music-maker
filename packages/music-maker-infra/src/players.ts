@@ -169,20 +169,20 @@ export class SimplePlayer extends AbstractChordPlayer {
 export class OffBeatPlayer extends AbstractChordPlayer {
 
     PlayFourBarPattern(track: ITrack, channel: number, chordChange: ChordChange) {
-        track.addNote(channel, 0, MusicConstants.BEAT, 0)
+        track.addNote(channel, 0, MusicConstants.BEAT, chordChange.Chord[0])
         track.addChord(channel, chordChange.Chord, MusicConstants.BEAT);
-        track.addNote(channel, 0, MusicConstants.BEAT, 0)
+        track.addNote(channel, 0, MusicConstants.BEAT, chordChange.Chord[0])
         track.addChord(channel, chordChange.Chord, MusicConstants.BEAT);
     }
 
     PlayThreeBarPattern(track: ITrack, channel: number, chordChange: ChordChange) {
-        track.addNote(channel, 0, MusicConstants.BEAT, 0)
+        track.addNote(channel, 0, MusicConstants.BEAT, chordChange.Chord[0])
         track.addChord(channel, chordChange.Chord, MusicConstants.BEAT);
-        track.addNote(channel, 0, MusicConstants.BEAT, 0)
+        track.addNote(channel, 0, MusicConstants.BEAT, chordChange.Chord[0])
     }
 
     PlayTwoBarPattern(track: ITrack, channel: number, chordChange: ChordChange) {
-        track.addNote(channel, 0, MusicConstants.BEAT, 0)
+        track.addNote(channel, 0, MusicConstants.BEAT, chordChange.Chord[0])
         track.addChord(channel, chordChange.Chord, MusicConstants.BEAT);
     }
 

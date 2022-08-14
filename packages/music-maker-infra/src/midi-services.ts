@@ -51,8 +51,8 @@ export class MidiServices implements IMidiServices
             if (currentChar == "x") {
                 track.addNote(9, note, MusicConstants.BEAT / 4)
             }
-            else if (currentChar != "|") {
-                track.addNote(9, 0, MusicConstants.BEAT / 4, 0);
+            else if (currentChar != "x") {
+                track.addNoteOff(9, 0, MusicConstants.BEAT / 4, 0)
             }
         }
     }
