@@ -1,11 +1,11 @@
-import { MidiServices } from '@ng-music-maker/infra';
+import { MidiServices, MusicMaker } from '@ng-music-maker/infra';
 import { DrumNotes } from '@ng-music-maker/core';
 const { exec } = require("child_process");
 
 var fs = require('fs');
 var Midi = require('jsmidgen');
 
-let midiServices = new MidiServices();
+let midiServices = new MusicMaker().midi;
 
 var file = new Midi.File();
 

@@ -12,13 +12,14 @@ function randomInteger(max: number)
 // Get 4 chord phrases ...
 let fourBarPhrases = new FourBarChordPhrases();
 let phrases  = fourBarPhrases.GetPhrases();
+phrases = phrases.filter(phrase => phrase.length == 4 || phrase.length == 6);
 
 // Randomly select phrase ...
-let p1 = randomInteger(13);
+let p1 = randomInteger(phrases.length);
 let phrase1 = phrases[p1];
 
 // Randomly select second phrase ...
-let p2 = randomInteger(13);
+let p2 = randomInteger(phrases.length);
 let phrase2 = phrases[p2];
 
 // Print out chords ...

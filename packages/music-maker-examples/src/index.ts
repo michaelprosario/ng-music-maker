@@ -1,5 +1,5 @@
-import { MakeMelodyCommand, ScaleType, ScaleService, MusicConstants } from '@ng-music-maker/core';
-import { MidiServices } from "@ng-music-maker/infra";
+import { MakeMelodyCommand, ScaleType, MusicConstants } from '@ng-music-maker/core';
+import { MusicMaker } from "@ng-music-maker/infra";
 const { exec } = require("child_process");
 var fs = require('fs');
 var Midi = require('jsmidgen');
@@ -9,8 +9,8 @@ command.scaleRoot = 60;
 command.scaleType = ScaleType.Major;
 command.phraseLengthInBeats = 16;
 
-const midiService = new MidiServices();
-const scaleService = new ScaleService(midiService);
+const mm = new MusicMaker();
+const scaleService = mm.scale;
 const scaleNotes = scaleService.MakeScale(command.scaleRoot-24, command.scaleType, 8);
 
 // let's generate a sin wave

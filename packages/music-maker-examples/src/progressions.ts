@@ -1,12 +1,12 @@
-import { Arpeggio1, BassPlayer1, BassPlayer2, BassPlayer3, MidiServices, OffBeatPlayer, RandomPlayer, SimplePlayer } from '@ng-music-maker/infra';
+import { MusicMaker, Arpeggio1, BassPlayer1, BassPlayer2, BassPlayer3, OffBeatPlayer, RandomPlayer, SimplePlayer } from '@ng-music-maker/infra';
 import { ChordChange, ChordType, ChordServices } from '@ng-music-maker/core';
 const { exec } = require("child_process");
 
 var fs = require('fs');
 var Midi = require('jsmidgen');
 
-let midiServices = new MidiServices();
-let chordServices = new ChordServices(midiServices);
+let musicMaker = new MusicMaker();
+let chordServices = musicMaker.chord;
 
 var file = new Midi.File();
 

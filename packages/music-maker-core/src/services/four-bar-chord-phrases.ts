@@ -21,7 +21,7 @@ export class FourBarChordPhrases {
         phrase = [];
         phrase.push(new ChordChange2(1, ChordType.Major, 4));
         phrase.push(new ChordChange2(5, ChordType.Major, 4));
-        phrase.push(new ChordChange2(4, ChordType.Minor, 4));
+        phrase.push(new ChordChange2(4, ChordType.Major, 4));
         phrase.push(new ChordChange2(4, ChordType.Major, 4));
         phrases.push(phrase);
 
@@ -108,7 +108,7 @@ export class FourBarChordPhrases {
         phrase = [];
         phrase.push(new ChordChange2(2, ChordType.Major, 4));
         phrase.push(new ChordChange2(4, ChordType.Major, 4));
-        phrase.push(new ChordChange2(2, ChordType.Minor, 4));
+        phrase.push(new ChordChange2(2, ChordType.Major, 4));
         phrase.push(new ChordChange2(4, ChordType.Major, 4));
         phrases.push(phrase);
 
@@ -116,7 +116,7 @@ export class FourBarChordPhrases {
         phrase = [];
         phrase.push(new ChordChange2(4, ChordType.Major, 4));
         phrase.push(new ChordChange2(5, ChordType.Major, 4));
-        phrase.push(new ChordChange2(1, ChordType.Minor, 4));
+        phrase.push(new ChordChange2(6, ChordType.Minor, 4));
         phrase.push(new ChordChange2(1, ChordType.Major, 4));
         phrases.push(phrase);
 
