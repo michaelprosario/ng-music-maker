@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>reveal.js</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Dropping a BEAT with Angular and TypeScript</h2>
+					<p>Michael Rosario</p>
+					<p>InnovativeTeams.NET</p>
+					<p>Twitter: @MichaelRosario</p>
+				</section>
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Motivation</li>
+						<li>Tour of Sonic Pi</li>
+						<li>Tour of Ng-Music-Maker</li>
+						<li>Google Magenta Project</li>
+						<li>Hands-on workshop</li>
+					</ul>
+				</section>
+				<section >
+					<img src="./images/music-slide.png">
+				</section>
+				<section>
+					<h3>NEAT Drummer @ Eplex of UCF</h3>
+					<img src="./images/neat-drummer.png">
+				</section>
+	<!--
+** motivation
+		- background in software
+		- blending the worlds with NEAT drummer
+		- enjoy teaching students to code
+		- inspired by sonic pi
+		- explore experiments with music oriented ux
+		- explore integration of block coding
+
+what
+		- music concepts
+		- tour of sonic pi
+		- tour of ng-music maker
+		- tour of 1 element of magenta project
+how
+	-->
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
