@@ -4,6 +4,7 @@ import { IMidiServices } from "../interfaces/midi-service";
 import { Chord } from "../value-objects/chord";
 import { ChordChange2 } from "../value-objects/chord-change2";
 import { Util } from "./util";
+import { IChordWithMeasures } from "../interfaces/chord-with-measures";
 
 export class ChordServices
 {
@@ -88,6 +89,20 @@ export class ChordServices
         }
 
         return aChord;
+    }
+
+    MakeChordList(chordChanges: IChordWithMeasures[])
+    {
+        // loop through chord changes ...
+        var chordList = new Array();
+        for(let chordChange of chordChanges)
+        {
+            chordList.push(new ChordChange(this.MakeChord(
+                chordChange.rootNote,
+                chordChange.chordType),chordChange.measures));
+        }
+
+        return chordList;
     }
 
     Estimate(notes: Array<number>)

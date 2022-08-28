@@ -15,7 +15,7 @@ track.setTempo(180);
 file.addTrack(track);
 
 // Make a scale
-var scale = mm.scale.MakeScale("c4", ScaleType.MajorPentatonic, 4);
+var scale = mm.scale.MakeScale("c4", ScaleType.Spanish, 4);
 for (var i = 0; i < scale.length; i++) {
     track.addNote(0, scale[i], 50);
 }
