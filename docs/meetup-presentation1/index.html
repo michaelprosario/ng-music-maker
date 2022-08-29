@@ -15,33 +15,150 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<h2>Dropping a BEAT with Angular and TypeScript</h2>
-					<p>Michael Rosario</p>
-					<p>InnovativeTeams.NET</p>
-					<p>Twitter: @MichaelRosario</p>
-				</section>
-				<section>
-					<h2>Agenda</h2>
-					<ul>
-						<li>Motivation</li>
-						<li>Tour of Sonic Pi</li>
-						<li>Tour of Ng-Music-Maker</li>
-						<li>Google Magenta Project</li>
-						<li>Hands-on workshop</li>
-					</ul>
-				</section>
-				<section >
-					<img src="./images/music-slide.png">
-				</section>
-				<section>
-					<h3>NEAT Drummer @ Eplex of UCF</h3>
-					<img src="./images/neat-drummer.png">
-				</section>
-	<!--
+<section>
+	<h2>Dropping a BEAT with Angular and TypeScript</h2>
+	<p>Michael Rosario</p>
+	<p>InnovativeTeams.NET</p>
+	<p>Twitter: @MichaelRosario</p>
+</section>
+<section>
+	<h2>Agenda</h2>
+	<ul>
+		<li>Motivation</li>
+		<li>Tour of Sonic Pi</li>
+		<li>Tour of Ng-Music-Maker</li>
+		<li>Google Magenta Project</li>
+		<li>Hands-on workshop</li>
+	</ul>
+</section>
+<section >
+	<img src="./images/music-slide.png">
+</section>
+<section>
+	<h3>NEAT Drummer @ Eplex of UCF</h3>
+	<img src="./images/neat-drummer.png">
+</section>
+<section>
+	<h3>Major Chord</h3>
+	<ul>
+		<li>{x} Major Chord = {x} + 4 steps + 3 steps</li>
+		<li>{x} is known root note</li>
+		<li>Happy feelings</li>
+	</ul>
+</section>
+<section>
+	<h3>Minor Chord</h3>
+	<ul>
+		<li>{x} Minor Chord = Root + 3 steps + 4 steps</li>
+		<li>{x} is known root note</li>
+		<li>Feelings of tension</li>
+	</ul>
+</section>
+<section>
+	<h3>Scales</h3>
+	<ul>
+		<li>Major</li>
+		<li>Minor</li>
+		<li>Pentatonic</li>
+		<li>Blues</li>
+	</ul>
+</section>
+<section>
+	<h3>Rythm</h3>
+	<ul>
+		<li>Repetition = good!</li>
+		<li>Space and silence matters</li>
+	</ul>
+</section>
+<section data-markdown>
+	## Tour of Sonic Pi
+	- Created by Sam Aaron
+	- Engaging tool for teaching music theory and code to makers young and old.
+	- Great EDM vibe! Features live coding
+</section>
+<section>
+	<h3>Sonic-Pi Demo</h3>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/LzenM5QhLvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+
+<section data-markdown>
+	## Tour of Sonic Pi
+
+``` ruby
+in_thread do
+	loop do
+		play_chord chord(:a, :minor)
+		sleep 2
+		play_chord chord(:g)
+		sleep 2
+		# more play_chords and sleeps ...
+	end
+end
+```
+</section>
+
+<section data-markdown>
+	## Tour of Sonic Pi
+
+``` ruby
+in_thread do
+	loop do
+		sample :drum_bass_hard
+		sleep 1
+		sample :drum_snare_hard
+		sleep 1
+	end
+end
+```
+</section>
+
+<section data-markdown>
+	## Tour of Sonic Pi
+
+``` ruby
+in_thread do
+	loop do
+		sample :drum_tom_hi_soft
+		sleep 0.5
+		sample :drum_cymbal_closed
+		sleep 0.5
+	end
+end
+```
+</section>
+<section data-markdown>
+	## Tour of Sonic Pi
+
+``` ruby
+loop do
+	play choose(scale(:a, :minor_pentatonic, num_octaves: 1))
+	sleep choose([1,0.25])
+end
+```
+</section>
+
+<section data-markdown>
+	## Tour of NG-Music-Maker
+	- Need architecture
+</section>
+<section data-markdown>
+## Tour of NG-Music-Maker
+- drum patterns
+- scales
+- progressions
+- random song maker
+</section>
+<section data-markdown>
+	## NG-Music-Maker(Angular)
+	- Drum machine
+	- Blockly song maker
+</section>
+
+
+				<!--
 ** motivation
-		- background in software
-		- blending the worlds with NEAT drummer
+		x- background in software
+		x- blending the worlds with NEAT drummer
 		- enjoy teaching students to code
 		- inspired by sonic pi
 		- explore experiments with music oriented ux
@@ -49,9 +166,17 @@
 
 what
 		- music concepts
+			x- rythm
+			x- scale
+				x- major
+				x- minor
+			x- chords
+				x- major
+				x- minor
 		- tour of sonic pi
-		- tour of ng-music maker
+		x- tour of ng-music maker
 		- tour of 1 element of magenta project
+				- tips for good melody
 how
 	-->
 
