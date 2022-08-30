@@ -1,5 +1,8 @@
 
-<button (click)="executeCode()">Run Code</button>
+<button (click)="executeCode()">Play music</button>
+<midi-player [src]="midiUrl" sound-font id="midiPlayer">
+</midi-player>
+
 <div id="divBlockly"></div>
 
 <xml id="xmlToolBox" style="display: none">

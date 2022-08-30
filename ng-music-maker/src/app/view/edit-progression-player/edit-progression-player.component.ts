@@ -2,6 +2,7 @@ import { MakeSongFromChordsCommand, ServerClient } from 'src/app/core/services/s
 import { Component, OnInit } from '@angular/core';
 // @ts-ignore
 import * as Blockly from 'blockly';
+import { environment } from 'src/environments/environment';
 declare var Blockly: any;
 
 let chordsToPlay: Array<any> = [];
@@ -18,10 +19,11 @@ function addChord(root: string, type: number, measures: number){
 export class EditProgressionPlayerComponent implements OnInit {
 
   workspace: any;
+  midiUrl: string;
 
   // @ts-ignore
   constructor(private serverClient: ServerClient) {
-
+    this.midiUrl = `${environment.apiUrl}/getSong/user1`;
   }
 
   ngOnInit() {
@@ -46,7 +48,6 @@ export class EditProgressionPlayerComponent implements OnInit {
   }
 
   executeCode(){
-    const blocklyDiv = document.getElementById('divBlockly');
     var code = Blockly.JavaScript.workspaceToCode(this.workspace);
     chordsToPlay = [];
     console.log(code);
@@ -58,5 +59,15 @@ export class EditProgressionPlayerComponent implements OnInit {
     command.chords = chordsToPlay;
     command.userId = "user1";
     this.serverClient.makeSongFromChords(command);
+
+    this.playSong();
+  }
+
+  private playSong() {
+    let midiPlayer = document.getElementById("midiPlayer");
+    // @ts-ignore
+    midiPlayer.reload();
+    // @ts-ignore
+    setTimeout(() => { midiPlayer.start(); }, 3000);
   }
 }

@@ -68,10 +68,9 @@ router.post('/makeSongFromChords', (req: Request, res: Response) => {
   chordPlayer = new BassPlayer1()
   chordPlayer.PlayFromChordChanges(track2, chordList, 0);
 
-  let midiFile = 'song-from-chords.mid';
-  fs.writeFileSync(midiFile, file.toBytes(), 'binary');
-
-  playMidi(midiFile);
+  let midiFile = 'song.mid';
+  let path = ".//output//" + midiFile;
+  fs.writeFileSync(path, file.toBytes(), 'binary');
 
   res.json({ "code": 200, "message": "ok" });
 });
@@ -84,5 +83,12 @@ router.get('/getDrumTrack/:userId', (req: Request, res: Response) => {
   res.download(path, fileName);
 });
 
+router.get('/getSong/:userId', (req: Request, res: Response) => {
+
+  let userId = req.params["userId"];
+  let fileName = "song.mid";
+  let path = ".//output//" + fileName;
+  res.download(path, fileName);
+});
 
 module.exports = router
