@@ -1,6 +1,6 @@
 import { MidiServices, MusicMaker } from '@ng-music-maker/infra';
 import { DrumNotes } from '@ng-music-maker/core';
-const { exec } = require("child_process");
+import { playMidi } from './play-midi';
 
 var fs = require('fs');
 var Midi = require('jsmidgen');
@@ -18,4 +18,4 @@ let mm = midiServices;
 var addRhythmPattern = mm.AddRhythmPattern;
 addRhythmPattern(track, "x-x-|x-x-|xxx-|x-xx",DrumNotes.ClosedHighHat);
 fs.writeFileSync('drumTest.mid', file.toBytes(), 'binary');
-exec('timidity drumTest.mid');
+playMidi('drumTest.mid');

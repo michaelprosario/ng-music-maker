@@ -1,6 +1,6 @@
 import { MusicMaker, Arpeggio1, BassPlayer1, BassPlayer2, BassPlayer3, OffBeatPlayer, RandomPlayer, SimplePlayer } from '@ng-music-maker/infra';
 import { ChordChange, ChordType, ChordServices } from '@ng-music-maker/core';
-const { exec } = require("child_process");
+import { playMidi } from './play-midi';
 
 var fs = require('fs');
 var Midi = require('jsmidgen');
@@ -43,4 +43,4 @@ chordPlayer = new OffBeatPlayer()
 chordPlayer.PlayFromChordChanges(track, chordList, 0);
 
 fs.writeFileSync('chordProgressions.mid', file.toBytes(), 'binary');
-exec('timidity chordProgressions.mid')
+playMidi('chordProgressions.mid')

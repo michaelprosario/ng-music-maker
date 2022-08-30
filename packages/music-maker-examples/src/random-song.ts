@@ -1,6 +1,6 @@
 import { ChordServices, DrumNotes, FourBarChordPhrases } from "@ng-music-maker/core";
 import { Arpeggio1, BassPlayer3, MidiServices, RandomPlayer } from '@ng-music-maker/infra';
-const { exec } = require("child_process");
+import { playMidi } from './play-midi';
 
 function randomInteger(max: number)
 {
@@ -94,4 +94,4 @@ addRhythmPattern(track6, "x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-".repeat(4*8),DrumNote
 
 // Execute player ...
 fs.writeFileSync('song1.mid', file.toBytes(), 'binary');
-exec('timidity song1.mid');
+playMidi('song1.mid');

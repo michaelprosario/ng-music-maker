@@ -1,6 +1,6 @@
 import { MusicMaker } from '@ng-music-maker/infra';
 import { ScaleType } from '@ng-music-maker/core';
-const { exec } = require("child_process");
+import { playMidi } from './play-midi';
 
 var fs = require('fs');
 var Midi = require('jsmidgen');
@@ -22,4 +22,4 @@ for (var i = 0; i < scale.length; i++) {
 
 // Write a MIDI file
 fs.writeFileSync('test.mid', file.toBytes(), 'binary');
-exec('timidity test.mid');
+playMidi('test.mid');
