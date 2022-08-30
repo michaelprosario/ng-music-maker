@@ -21,7 +21,7 @@ import { DrumTrackViewModel } from './drum-track-view-model';
 })
 export class EditDrumTrackComponent implements OnInit {
 
-  tempo: number = 180;
+  tempo: number = 120;
   beatsPerMeasure: number = 4;
   numberOfMeasures: number = 4;
   tracks: DrumTrackViewModel[];
@@ -41,7 +41,11 @@ export class EditDrumTrackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // standard drum stuff ..
+    this.setupDrumStuff();
+  }
+
+  private setupDrumStuff() {
+    this.tracks = [];
     let aTrack = new DrumTrackViewModel("Base Drum", 36, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
     aTrack = new DrumTrackViewModel("Snare Drum", 38, this.numberOfMeasures, this.beatsPerMeasure);
@@ -73,11 +77,13 @@ export class EditDrumTrackComponent implements OnInit {
     aTrack = new DrumTrackViewModel("Cow bell", 56, this.numberOfMeasures, this.beatsPerMeasure);
     this.tracks.push(aTrack);
 
-
-
+    // Shaker ...
+    aTrack = new DrumTrackViewModel("Shaker", 70, this.numberOfMeasures, this.beatsPerMeasure);
+    this.tracks.push(aTrack);
   }
 
   onClearTracks(){
+    this.setupDrumStuff();
     for (let track of this.tracks) {
       for (let j = 0; j < track.trackData.length; j++) {
           track.trackData[j] = 0;

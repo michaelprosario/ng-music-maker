@@ -1,33 +1,37 @@
 <button (click)="onPlayTracks()">Play</button>
-<button (click)="onClearTracks()">Clear</button>
+<button (click)="onClearTracks()">Reset</button>
 <button (click)="onDownload()">Save MIDI File</button>
+
 <p-panel header="NG Music Maker > Drum Machine" [toggleable]="false">
+
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <div>Tempo</div>
+                    <div><input [(ngModel)]="tempo"></div>
+                </div>
+                <div>
+                    <div>Beats per measure</div>
+                    <div><input [(ngModel)]="beatsPerMeasure"></div>
+                </div>
+                <div>
+                    <div>Number of measures</div>
+                    <div><input [(ngModel)]="numberOfMeasures"></div>
+                </div>
+
+            </td>
+            <td>
+                <midi-player [src]="midiUrl" sound-font id="midiPlayer">
+                </midi-player>
+            </td>
+        </tr>
+    </table>
     <div class="divTracks">
 
         <div *ngFor="let track of tracks; let i = index">
-            <app-drum-track-row [track]="track"  ></app-drum-track-row>
+            <app-drum-track-row [track]="track"></app-drum-track-row>
         </div>
 
     </div>
-    <h3>Configuration</h3>
-    <div>
-        <div>Tempo</div>
-        <div><input [(ngModel)]="tempo" ></div>
-    </div>
-    <div>
-        <div>Beats per measure</div>
-        <div><input [(ngModel)]="beatsPerMeasure" ></div>
-    </div>
-    <div>
-        <div>Number of measures</div>
-        <div><input [(ngModel)]="numberOfMeasures" ></div>
-    </div>
-
 </p-panel>
-
-<midi-player
-  [src]="midiUrl"
-  sound-font
-  id="midiPlayer"
-  >
-</midi-player>

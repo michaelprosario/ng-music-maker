@@ -39,12 +39,7 @@ router.get('/getDrumTrack/:userId', (req: Request, res: Response) => {
   let userId = req.params["userId"];
   let fileName = "drumTrack_" + userId + ".mid";
   let path = ".//output//" + fileName;
-  console.log("path to download................");
-  console.log(path);
-
-  res.download(path, function(error){
-    console.log("Error : ", error)
-});
+  res.download(path, fileName);
 });
 
 
