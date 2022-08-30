@@ -7,6 +7,7 @@ export { IMidiServices } from './interfaces/midi-service';
 export { ITrack } from './interfaces/track';
 export { IChordWithMeasures } from "./interfaces/chord-with-measures";
 export { MakeDrumTrackCommand } from './requests/make-drum-track-command';
+export { MakeSongFromChordsCommand } from './requests/make-song-from-chords-command';
 export { MakeMelodyCommand } from './requests/make-melody-command';
 export { MakeDrumTrackResponse } from './response/make-drum-track-response';
 export { MakeDrumTrackService } from './services/make-drum-track-service';

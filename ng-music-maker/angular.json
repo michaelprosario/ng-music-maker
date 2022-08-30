@@ -25,7 +25,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/blockly/media",
+                "output": "./media/"
+              }
             ],
             "styles": [
               "node_modules/primeng/resources/themes/mdc-dark-deeppurple/theme.css",
@@ -33,7 +38,13 @@
               "node_modules/primeicons/primeicons.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/blockly/blockly_compressed.js",
+              "node_modules/blockly/blocks_compressed.js",
+              "node_modules/blockly/javascript_compressed.js",
+              "node_modules/blockly/msg/en.js",
+              "src/app/view/edit-progression-player/my-blocks.js"
+            ]
           },
           "configurations": {
             "production": {

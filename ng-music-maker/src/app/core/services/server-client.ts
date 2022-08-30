@@ -19,7 +19,16 @@ export class MakeDrumTrackCommand {
         this.tracks = [];
         this.userId = '';
     }
+}
 
+export class MakeSongFromChordsCommand {
+    chords: Array<any> = [];
+    userId: string = '';
+
+    constructor()
+    {
+        this.userId = '';
+    }
 }
 
 
@@ -36,6 +45,14 @@ export class ServerClient {
         }
 
         return this.http.post(`${environment.apiUrl}/makeDrumTrack`, command).toPromise();
+    }
+
+    public async makeSongFromChords(command: MakeSongFromChordsCommand) {
+        if (!command) {
+            throw new Error('Command is not defined');
+        }
+
+        return this.http.post(`${environment.apiUrl}/makeSongFromChords`, command).toPromise();
     }
 
 }
